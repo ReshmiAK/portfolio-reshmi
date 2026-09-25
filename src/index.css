@@ -1,0 +1,66 @@
+:root {
+  --bg-color: #ffffff;
+  --bg-alt: #f6f7fb;
+  --text-color: #1a1a1a;
+  --text-muted: #5a5a5a;
+  --border-color: #e5e4e7;
+  --card-bg: #ffffff;
+  --accent: #6c5ce7;
+  --accent-contrast: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.08) 0 4px 12px;
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --bg-alt: #1a1b21;
+  --text-color: #f1f1f1;
+  --text-muted: #b3b3b3;
+  --border-color: #2e303a;
+  --card-bg: #1e1f27;
+  --accent: #a29bfe;
+  --accent-contrast: #121212;
+  --shadow: rgba(0, 0, 0, 0.4) 0 4px 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+section {
+  padding: 4rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  scroll-margin-top: 80px;
+}
+
+a {
+  color: var(--accent);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
