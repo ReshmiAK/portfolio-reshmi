@@ -1,264 +1,183 @@
-/* ---------- Shell & toolbar ---------- */
-.book-shell {
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
+/* ---------- Background shapes (color-theory accents) ---------- */
+.bg-shapes {
+  position: fixed;
+  inset: 0;
   overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
 }
 
-.book-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.85rem 1.5rem;
-  background: var(--card-bg);
+.shape {
+  position: absolute;
+  filter: blur(2px);
+  opacity: 0.5;
+}
+
+.shape-circle {
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--primary-soft), transparent 70%);
+  border: 1px solid var(--primary-soft);
+}
+
+.shape-square {
+  border-radius: 28px;
+  background: radial-gradient(circle at 30% 30%, var(--secondary-soft), transparent 70%);
+  border: 1px solid var(--secondary-soft);
+}
+
+.shape-1 {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  right: -120px;
+}
+
+.shape-2 {
+  width: 220px;
+  height: 220px;
+  top: 55vh;
+  left: -80px;
+  transform: rotate(18deg);
+}
+
+.shape-3 {
+  width: 300px;
+  height: 300px;
+  top: 120vh;
+  right: -100px;
+}
+
+.shape-4 {
+  width: 180px;
+  height: 180px;
+  top: 190vh;
+  left: 6vw;
+  transform: rotate(-12deg);
+}
+
+.shape-5 {
+  width: 340px;
+  height: 340px;
+  top: 260vh;
+  right: 4vw;
+}
+
+/* Keep real content above the decorative layer */
+header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Navbar ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--card-bg) 88%, transparent);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
-  flex-wrap: wrap;
 }
 
-.book-toolbar .logo {
+.navbar {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.logo {
+  font-size: 1.15rem;
   font-weight: 700;
-  font-family: var(--serif);
-  white-space: nowrap;
+  color: var(--text-color);
+  text-decoration: none;
 }
 
-.book-nav {
+.nav-links {
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
-  justify-content: center;
-  flex: 1;
+  gap: 1.4rem;
+  margin: 0;
 }
 
-.book-nav button {
-  background: none;
-  border: 1px solid transparent;
+.nav-links a {
+  text-decoration: none;
   color: var(--text-muted);
-  font-size: 0.85rem;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.15s ease;
+  font-weight: 500;
+  font-size: 0.92rem;
+  transition: color 0.2s ease;
 }
 
-.book-nav button:hover {
-  color: var(--accent);
-}
-
-.book-nav button.active {
-  color: var(--accent-contrast);
-  background: var(--accent);
+.nav-links a:hover {
+  color: var(--primary);
 }
 
 #theme-toggle {
   cursor: pointer;
-  background: none;
+  background: var(--bg-alt);
   border: 1px solid var(--border-color);
   border-radius: 50%;
-  width: 2.2rem;
-  height: 2.2rem;
-  font-size: 1.1rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  font-size: 1.05rem;
   flex-shrink: 0;
 }
 
-/* ---------- Stage (book + arrows) ---------- */
-.book-stage {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  background: var(--stage-bg);
-  padding: 1.5rem;
-  min-height: 0;
-}
-
-.book-arrow {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  color: var(--text-color);
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  flex-shrink: 0;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-
-.book-arrow:hover:not(:disabled) {
-  transform: scale(1.08);
-}
-
-.book-arrow:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-.book-page-indicator {
+/* ---------- Hero ---------- */
+.hero {
   text-align: center;
-  padding: 0.6rem;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  background: var(--card-bg);
-  border-top: 1px solid var(--border-color);
+  padding-top: 6rem;
+  padding-bottom: 4rem;
 }
 
-/* ---------- The book itself ---------- */
-.book {
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-}
-
-.book-page {
-  background: var(--paper);
-  color: var(--paper-text);
-  position: relative;
-  overflow: hidden;
-}
-
-.book-page-content {
-  height: 100%;
-  overflow-y: auto;
-  padding: 2rem 1.75rem 2.5rem;
-  text-align: left;
-  scrollbar-width: thin;
-}
-
-.book-page-content p,
-.book-page-content li {
-  color: var(--paper-muted);
-  line-height: 1.5;
-}
-
-.book-page-number {
-  position: absolute;
-  bottom: 0.6rem;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--paper-muted);
-  font-family: var(--serif);
-}
-
-/* Covers */
-.book-cover {
-  background: var(--cover-bg);
-  color: var(--cover-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.book-cover-content {
-  text-align: center;
-  padding: 2rem;
-}
-
-.book-cover-kicker {
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.75rem;
-  opacity: 0.7;
-  margin-bottom: 1rem;
-}
-
-.book-cover-content h1 {
-  font-family: var(--serif);
-  font-size: 2rem;
-  margin: 0 0 0.5rem;
-}
-
-.book-cover-small {
-  font-size: 1.3rem !important;
-}
-
-.book-cover-content > p {
-  opacity: 0.85;
-}
-
-.book-cover-hint {
-  display: block;
-  margin-top: 2.5rem;
-  font-size: 0.8rem;
-  opacity: 0.6;
-}
-
-.book-cover-links {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-}
-
-.book-cover-links a {
-  color: var(--cover-text);
-  text-decoration: none;
-  opacity: 0.85;
-  font-size: 0.9rem;
-}
-
-.book-cover-links a:hover {
-  opacity: 1;
-  text-decoration: underline;
-}
-
-/* ---------- Page content: hero ---------- */
-.hero-name {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--paper-text);
-  margin-top: 0.5rem;
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 0.4rem;
 }
 
 .hero-title {
-  color: var(--paper-muted);
-  margin-top: 0.15rem;
+  color: var(--secondary);
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .hero-intro {
-  margin-top: 1rem;
-  color: var(--paper-muted);
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 1.25rem auto 0;
 }
 
 .hero-links {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.5rem;
-}
-
-.hero-links a {
-  text-decoration: none;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-color);
-  color: var(--paper-text);
-  font-size: 0.85rem;
+  gap: 0.75rem;
+  margin-top: 2rem;
 }
 
 /* ---------- Cards ---------- */
 .card {
-  background: rgba(128, 128, 128, 0.06);
+  background: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 1.1rem;
+  border-radius: 14px;
+  padding: 1.5rem;
   text-align: left;
+  box-shadow: var(--shadow);
 }
 
 .education-card {
-  margin-top: 1.25rem;
+  max-width: 520px;
 }
 
 /* ---------- Timeline ---------- */
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .timeline-header {
@@ -266,57 +185,55 @@
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .timeline-header h3 {
   margin: 0;
-  font-size: 1rem;
-  color: var(--paper-text);
+  font-size: 1.05rem;
 }
 
 .timeline-period {
-  color: var(--paper-muted);
-  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
   white-space: nowrap;
 }
 
 .timeline-company {
-  color: var(--accent);
+  color: var(--secondary);
   font-weight: 600;
-  margin: 0.15rem 0 0.6rem;
-  font-size: 0.9rem;
+  margin: 0.2rem 0 0.75rem;
+  font-size: 0.92rem;
 }
 
 .timeline-item ul {
   margin: 0;
-  padding-left: 1rem;
+  padding-left: 1.1rem;
   list-style: disc;
 }
 
 .timeline-item li {
-  margin-bottom: 0.3rem;
-  font-size: 0.88rem;
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
 }
 
 /* ---------- Skills / certifications ---------- */
 .skills-grid,
 .certifications-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
 }
 
 .skill-card h3 {
-  font-size: 0.92rem;
-  margin: 0 0 0.6rem;
-  color: var(--paper-text);
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
 }
 
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .tag-list.centered {
@@ -324,48 +241,48 @@
 }
 
 .tag {
-  background: rgba(128, 128, 128, 0.12);
-  border: 1px solid var(--border-color);
+  background: var(--primary-soft);
+  border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0.25rem 0.7rem;
-  font-size: 0.78rem;
-  color: var(--paper-text);
+  padding: 0.32rem 0.85rem;
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 500;
 }
 
 /* ---------- Projects ---------- */
 .projects-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
 .project-card h3 {
-  margin: 0 0 0.15rem;
-  color: var(--paper-text);
+  margin: 0 0 0.2rem;
 }
 
 .project-tagline {
-  color: var(--accent);
+  color: var(--secondary);
   font-weight: 600;
-  margin-bottom: 0.6rem;
-  font-size: 0.88rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.92rem;
 }
 
 .project-card p:not(.project-tagline) {
-  margin-bottom: 0.85rem;
-  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
 }
 
 .project-links {
   display: flex;
-  gap: 0.6rem;
-  margin-top: 1rem;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
   flex-wrap: wrap;
 }
 
 .project-pending {
-  color: var(--paper-muted);
-  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
   font-style: italic;
 }
 
@@ -373,47 +290,49 @@
 .btn {
   display: inline-block;
   text-decoration: none;
-  background: var(--accent);
+  background: var(--primary);
   color: var(--accent-contrast);
-  padding: 0.5rem 1.2rem;
-  border-radius: 8px;
+  padding: 0.65rem 1.4rem;
+  border-radius: 10px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--paper-text);
+  color: var(--text-color);
   border: 1px solid var(--border-color);
 }
 
 /* ---------- Achievements ---------- */
 .achievements-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.75rem;
+  max-width: 560px;
 }
 
 .achievements-list li {
-  background: rgba(128, 128, 128, 0.06);
+  background: var(--card-bg);
   border: 1px solid var(--border-color);
+  border-left: 3px solid var(--secondary);
   border-radius: 8px;
-  padding: 0.6rem 0.85rem;
-  font-size: 0.88rem;
+  padding: 0.75rem 1rem;
 }
 
 .subheading {
-  margin-top: 1.75rem;
-  margin-bottom: 0.85rem;
-  font-size: 1rem;
-  color: var(--paper-muted);
-  font-family: var(--serif);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-color);
 }
 
 /* ---------- Certifications ---------- */
@@ -423,47 +342,59 @@
 
 .cert-name {
   font-weight: 600;
-  margin: 0 0 0.25rem;
-  font-size: 0.9rem;
-  color: var(--paper-text);
+  margin: 0 0 0.35rem;
 }
 
 .cert-issuer {
-  color: var(--paper-muted);
+  color: var(--text-muted);
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
 }
 
 /* ---------- Resume ---------- */
 .resume-intro {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--border-color);
+  padding: 2.5rem 1.5rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.footer-links a:hover {
+  color: var(--primary);
 }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 640px) {
-  .book-toolbar {
-    padding: 0.6rem 0.85rem;
+  .navbar {
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
-  .book-nav {
+  .nav-links {
     order: 3;
     width: 100%;
-    gap: 0.25rem;
+    justify-content: center;
+    gap: 0.75rem;
   }
 
-  .book-nav button {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.55rem;
-  }
-
-  .book-arrow {
-    width: 2.2rem;
-    height: 2.2rem;
-    font-size: 1.3rem;
-  }
-
-  .book-stage {
-    padding: 0.75rem;
-    gap: 0.5rem;
+  section {
+    padding: 3.5rem 1.25rem;
   }
 }

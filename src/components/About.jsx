@@ -2,9 +2,10 @@ import { education } from "../data/resumeData";
 
 export default function About() {
   return (
-    <>
-      <h2>About Me</h2>
-      <p>
+    <section id="about">
+      <p className="eyebrow">About</p>
+      <h2>A bit about me</h2>
+      <p className="section-lead">
         I'm a Computer Science student who enjoys building practical, real-world
         software - from full-stack web apps to AI/ML powered tools - and I'm
         always looking for the next interesting problem to solve.
@@ -16,6 +17,6 @@ export default function About() {
           CGPA: <strong>{education.cgpa}</strong> · Batch: {education.batch}
         </p>
       </div>
-    </>
+    </section>
   );
 }

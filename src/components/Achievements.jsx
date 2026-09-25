@@ -2,8 +2,9 @@ import { achievements, coursework } from "../data/resumeData";
 
 export default function Achievements() {
   return (
-    <>
-      <h2>Achievements</h2>
+    <section id="achievements">
+      <p className="eyebrow">Achievements</p>
+      <h2>Milestones</h2>
       <ul className="achievements-list">
         {achievements.map((item) => (
           <li key={item}>{item}</li>
@@ -18,6 +19,6 @@ export default function Achievements() {
           </li>
         ))}
       </ul>
-    </>
+    </section>
   );
 }

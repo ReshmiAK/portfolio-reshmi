@@ -2,8 +2,9 @@ import { experience } from "../data/resumeData";
 
 export default function Experience() {
   return (
-    <>
-      <h2>Experience</h2>
+    <section id="experience">
+      <p className="eyebrow">Experience</p>
+      <h2>Where I've worked</h2>
       <div className="timeline">
         {experience.map((job) => (
           <div className="card timeline-item" key={`${job.company}-${job.role}`}>
@@ -20,6 +21,6 @@ export default function Experience() {
           </div>
         ))}
       </div>
-    </>
+    </section>
   );
 }
