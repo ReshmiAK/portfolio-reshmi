@@ -1,6 +1,6 @@
-/* ---------- Background shapes (color-theory accents) ---------- */
+/* ---------- Background shapes (earth-tone accents) ---------- */
 .bg-shapes {
-  position: fixed;
+  position: absolute;
   inset: 0;
   overflow: hidden;
   z-index: 0;
@@ -9,20 +9,16 @@
 
 .shape {
   position: absolute;
-  filter: blur(2px);
-  opacity: 0.5;
+  opacity: 0.4;
+  box-shadow: 0 25px 50px -20px rgba(59, 42, 31, 0.35);
 }
 
 .shape-circle {
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, var(--primary-soft), transparent 70%);
-  border: 1px solid var(--primary-soft);
 }
 
-.shape-square {
-  border-radius: 28px;
-  background: radial-gradient(circle at 30% 30%, var(--secondary-soft), transparent 70%);
-  border: 1px solid var(--secondary-soft);
+.shape-arch {
+  border-radius: 50% 50% 0 0 / 62% 62% 0 0;
 }
 
 .shape-1 {
@@ -30,36 +26,72 @@
   height: 420px;
   top: -140px;
   right: -120px;
+  background: var(--shape-1);
+  opacity: 0.35;
 }
 
 .shape-2 {
-  width: 220px;
-  height: 220px;
-  top: 55vh;
-  left: -80px;
-  transform: rotate(18deg);
+  width: 180px;
+  height: 180px;
+  top: 8vh;
+  left: -60px;
+  background: var(--shape-6);
+  opacity: 0.45;
 }
 
 .shape-3 {
-  width: 300px;
-  height: 300px;
-  top: 120vh;
-  right: -100px;
+  width: 150px;
+  height: 280px;
+  top: 42vh;
+  right: 6vw;
+  background: var(--shape-2);
+  opacity: 0.4;
 }
 
 .shape-4 {
-  width: 180px;
-  height: 180px;
-  top: 190vh;
-  left: 6vw;
-  transform: rotate(-12deg);
+  width: 300px;
+  height: 300px;
+  top: 98vh;
+  left: -110px;
+  background: var(--shape-3);
+  opacity: 0.35;
 }
 
 .shape-5 {
-  width: 340px;
-  height: 340px;
-  top: 260vh;
-  right: 4vw;
+  width: 200px;
+  height: 200px;
+  top: 150vh;
+  right: -70px;
+  background: var(--shape-4);
+  opacity: 0.4;
+  transform: rotate(8deg);
+}
+
+.shape-6 {
+  width: 260px;
+  height: 260px;
+  top: 205vh;
+  left: 3vw;
+  background: var(--shape-5);
+  opacity: 0.35;
+}
+
+.shape-7 {
+  width: 190px;
+  height: 190px;
+  top: 262vh;
+  right: 7vw;
+  background: var(--shape-1);
+  opacity: 0.4;
+}
+
+.shape-8 {
+  width: 130px;
+  height: 240px;
+  top: 305vh;
+  left: -30px;
+  background: var(--shape-2);
+  opacity: 0.4;
 }
 
 /* Keep real content above the decorative layer */

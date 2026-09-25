@@ -1,39 +1,55 @@
 :root {
-  /* Neutrals */
-  --bg-color: #f8fafc;
-  --bg-alt: #eef1f6;
-  --text-color: #0f172a;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
-  --card-bg: #ffffff;
+  /* Neutrals - warm cream base */
+  --bg-color: #f7efe4;
+  --bg-alt: #f0e4d3;
+  --text-color: #3b2a1f;
+  --text-muted: #7c6a5b;
+  --border-color: #e6d7c3;
+  --card-bg: #fffbf5;
 
-  /* Analogous blue/cyan brand palette */
-  --primary: #4338ca;
-  --primary-soft: rgba(67, 56, 202, 0.1);
-  --secondary: #0ea5e9;
-  --secondary-soft: rgba(14, 165, 233, 0.12);
-  --accent-contrast: #ffffff;
+  /* Terracotta / earth-tone brand palette */
+  --primary: #c2703d;
+  --primary-soft: rgba(194, 112, 61, 0.12);
+  --secondary: #a8451f;
+  --secondary-soft: rgba(168, 69, 31, 0.12);
+  --accent-contrast: #fffbf5;
 
-  --shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.15);
+  --shadow: 0 10px 30px -12px rgba(59, 42, 31, 0.18);
+
+  /* Background shape colors */
+  --shape-1: #a8451f;
+  --shape-2: #f6ead9;
+  --shape-3: #c2703d;
+  --shape-4: #cfa07a;
+  --shape-5: #93705a;
+  --shape-6: #eab784;
 
   --sans: "Segoe UI", system-ui, Roboto, sans-serif;
 }
 
 body.dark-mode {
-  --bg-color: #0b1120;
-  --bg-alt: #0f172a;
-  --text-color: #f1f5f9;
-  --text-muted: #94a3b8;
-  --border-color: #263042;
-  --card-bg: #131c2e;
+  --bg-color: #1c140d;
+  --bg-alt: #241a11;
+  --text-color: #f3e8db;
+  --text-muted: #c2ab97;
+  --border-color: #3d2e20;
+  --card-bg: #271c13;
 
-  --primary: #818cf8;
-  --primary-soft: rgba(129, 140, 248, 0.14);
-  --secondary: #38bdf8;
-  --secondary-soft: rgba(56, 189, 248, 0.16);
-  --accent-contrast: #0b1120;
+  --primary: #e08a4f;
+  --primary-soft: rgba(224, 138, 79, 0.16);
+  --secondary: #d9713a;
+  --secondary-soft: rgba(217, 113, 58, 0.16);
+  --accent-contrast: #1c140d;
 
   --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+
+  /* Background shape colors */
+  --shape-1: #e07a3e;
+  --shape-2: #3a2c20;
+  --shape-3: #d98a52;
+  --shape-4: #b08b73;
+  --shape-5: #8a6c58;
+  --shape-6: #f0c79a;
 }
 
 * {
