@@ -2,7 +2,7 @@ import { projects } from "../data/resumeData";
 
 export default function Projects() {
   return (
-    <section id="projects">
+    <>
       <h2>Projects</h2>
       <div className="projects-grid">
         {projects.map((project) => (
@@ -35,6 +35,6 @@ export default function Projects() {
           </div>
         ))}
       </div>
-    </section>
+    </>
   );
 }

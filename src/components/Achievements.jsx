@@ -2,7 +2,7 @@ import { achievements, coursework } from "../data/resumeData";
 
 export default function Achievements() {
   return (
-    <section id="achievements">
+    <>
       <h2>Achievements</h2>
       <ul className="achievements-list">
         {achievements.map((item) => (
@@ -18,6 +18,6 @@ export default function Achievements() {
           </li>
         ))}
       </ul>
-    </section>
+    </>
   );
 }

@@ -1,35 +1,11 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Achievements from "./components/Achievements";
-import Certifications from "./components/Certifications";
-import Resume from "./components/Resume";
-import Footer from "./components/Footer";
+import PortfolioBook from "./components/book/PortfolioBook";
 import { useTheme } from "./hooks/useTheme";
 import "./App.css";
 
 function App() {
   const { theme, toggleTheme } = useTheme();
 
-  return (
-    <>
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <Achievements />
-        <Certifications />
-        <Resume />
-      </main>
-      <Footer />
-    </>
-  );
+  return <PortfolioBook theme={theme} toggleTheme={toggleTheme} />;
 }
 
 export default App;

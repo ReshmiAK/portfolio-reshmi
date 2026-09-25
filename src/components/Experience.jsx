@@ -2,7 +2,7 @@ import { experience } from "../data/resumeData";
 
 export default function Experience() {
   return (
-    <section id="experience">
+    <>
       <h2>Experience</h2>
       <div className="timeline">
         {experience.map((job) => (
@@ -20,6 +20,6 @@ export default function Experience() {
           </div>
         ))}
       </div>
-    </section>
+    </>
   );
 }
