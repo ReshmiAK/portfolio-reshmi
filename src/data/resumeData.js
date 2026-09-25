@@ -12,7 +12,7 @@ export const profile = {
 export const education = {
   degree: "B.E. Computer Science Engineering",
   institution: "Chennai Institute of Technology, Chennai, Tamil Nadu",
-  cgpa: "8.67",
+  cgpa: "8.59",
   batch: "2024 - 2028",
 };
 
